@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import SideBar from "../SideBar/SideBar";
 import "./Registration.scss";
 import Header from "../Header/Header";
-import { UNSAFE_ViewTransitionContext } from "react-router-dom";
 import { UserProvider } from "../Header/UserContext";
 
 function Regestration() {

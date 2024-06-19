@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./AddPublic.scss";
 import { format } from "date-fns";
 import SideBar from "../SideBar/SideBar";

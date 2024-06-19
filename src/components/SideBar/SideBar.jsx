@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import "./SideBar.scss";
 import { Link } from "react-router-dom";
 

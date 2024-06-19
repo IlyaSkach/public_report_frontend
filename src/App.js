@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.scss";
-import Header from "./components/Header/Header";
 import Soon from "./components/ComingSoon/Soon";
 import MunualEntriens from "./components/MunualEntriens/MunualEntriens";
 import Registration from "./components/Registration/Registration";

@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import SideBar from "../SideBar/SideBar";
 import "./Soon.scss";
 import Header from "../Header/Header";

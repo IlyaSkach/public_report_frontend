@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useUser } from "./UserContext"; // Импортируйте хук useUser
 import "./Header.scss";
 
