@@ -30,7 +30,7 @@ const AddPublic = () => {
     console.log("Отправляемые данные:", formData);
 
     try {
-      const response = await fetch("https://5.35.29.249:3001/addData", {
+      const response = await fetch("http://5.35.29.249:3001/addData", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
