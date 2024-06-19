@@ -14,7 +14,7 @@ function Regestration() {
   const deleteUser = async (userId) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/data/users/${userId}`,
+        `http://5.35.29.249:3001/data/users/${userId}`,
         {
           method: "DELETE",
         }
@@ -33,7 +33,7 @@ function Regestration() {
     // Шаг 2: Выполнение запроса при монтировании компонента
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:3001/data/users");
+        const response = await fetch("http://5.35.29.249:3001/data/users");
         if (!response.ok) {
           throw new Error("Сетевой запрос за пользователями не удался");
         }
@@ -51,7 +51,7 @@ function Regestration() {
     e.preventDefault();
     console.log("Отправляемые данные:", { username, password, role });
     try {
-      const response = await fetch("http://localhost:3001/register", {
+      const response = await fetch("http://5.35.29.249:3001/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
