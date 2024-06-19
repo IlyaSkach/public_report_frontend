@@ -10,7 +10,7 @@ function LoginForm({ onAuthenticate }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://5.35.29.249:3001/login", {
+      const response = await fetch("https://5.35.29.249:3001/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
 					// Здесь можно добавить логику перенаправления на страницу входа
 					return; // Прекращаем выполнение функции, если токен отсутствует
 				}
-				const response = await fetch("http://5.35.29.249:3001/api/user", {
+				const response = await fetch("https://5.35.29.249:3001/api/user", {
 					headers: {
 						'Authorization': `Bearer ${token}`
 					}

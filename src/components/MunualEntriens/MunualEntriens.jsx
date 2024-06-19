@@ -26,7 +26,7 @@ const MunualEntriens = () => {
     console.log("Отправляемые данные:", formData);
 
     try {
-      const response = await fetch("http://5.35.29.249:3001/addMunual", {
+      const response = await fetch("https://5.35.29.249:3001/addMunual", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +58,7 @@ const MunualEntriens = () => {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const response = await fetch("http://5.35.29.249:3001/socialNames");
+        const response = await fetch("https://5.35.29.249:3001/socialNames");
         if (!response.ok) {
           throw new Error(
             `Ошибка при получении данных: ${response.status} ${response.statusText}`
