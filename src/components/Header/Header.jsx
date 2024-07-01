@@ -1,21 +1,13 @@
 import React, { useEffect } from "react";
-import { useUser } from "./UserContext"; // Импортируйте хук useUser
+import { useUser } from "./UserContext"; 
 import "./Header.scss";
 
 const Header = () => {
-  const { user } = useUser(); // Используйте хук для доступа к текущему пользователю
+  const { user } = useUser(); 
 
   useEffect(() => {
     console.log("Имя", user);
   }, [user]);
-
-  // Функция для отображения имени пользователя или "Гость", если user не определен
-  // const renderUserName = () => {
-  //   if (user && user.name) {
-  //     return user.name;
-  //   }
-  //   return "Гость";
-  // };
 
   return (
     <>

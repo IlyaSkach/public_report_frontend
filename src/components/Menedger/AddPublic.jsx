@@ -17,20 +17,20 @@ const AddPublic = () => {
       ? format(new Date(purchase_date), "yyyy-MM-dd")
       : "";
 
-    // Используем регулярное выражение для извлечения числовой части из URL
     const externalIdMatch = link.match(/public(\d+)/);
     const externalId = externalIdMatch ? externalIdMatch[1] : "";
     const formData = {
       link,
       purchase_date: formattedPurchaseDate,
       price,
-      external_id: externalId, // Добавляем external_id в объект formData
+      external_id: externalId,
     };
 
     console.log("Отправляемые данные:", formData);
 
     try {
-      const response = await fetch("http://5.35.29.249:3001/addData", {
+      const response = await fetch("http://127.0.0.1:3001/addData", {
+        //  http://5.35.29.249:3001/addData
         method: "POST",
         headers: {
           "Content-Type": "application/json",

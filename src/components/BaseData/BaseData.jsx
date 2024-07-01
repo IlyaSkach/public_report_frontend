@@ -7,7 +7,7 @@ import { UserProvider } from "../Header/UserContext";
 const BaseData = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://5.35.29.249:3001/data/public_page")
+    fetch("http://127.0.0.1:3001/data/public_page") // "http://5.35.29.249:3001/data/public_page"
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

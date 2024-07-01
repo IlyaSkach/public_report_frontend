@@ -13,7 +13,7 @@ function Regestration() {
   const deleteUser = async (userId) => {
     try {
       const response = await fetch(
-        `http://5.35.29.249:3001/data/users/${userId}`,
+        `http://127.0.0.1:3001/data/users/${userId}`, // http://5.35.29.249:3001/data/users/${userId}
         {
           method: "DELETE",
         }
@@ -21,7 +21,6 @@ function Regestration() {
       if (!response.ok) {
         throw new Error("Ошибка при удалении пользователя");
       }
-      // Обновление списка пользователей после удаления
       setUsers(users.filter((user) => user.id !== userId));
     } catch (error) {
       console.error("Ошибка при удалении пользователя:", error);
@@ -29,15 +28,14 @@ function Regestration() {
   };
 
   useEffect(() => {
-    // Шаг 2: Выполнение запроса при монтировании компонента
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://5.35.29.249:3001/data/users");
+        const response = await fetch("http://127.0.0.1:3001/data/users"); //  "http://5.35.29.249:3001/data/users"
         if (!response.ok) {
           throw new Error("Сетевой запрос за пользователями не удался");
         }
         const usersData = await response.json();
-        setUsers(usersData); // Шаг 3: Обновление состояния данными пользователей
+        setUsers(usersData);
       } catch (error) {
         console.error("Ошибка при получении пользователей:", error);
       }
@@ -46,11 +44,29 @@ function Regestration() {
     fetchUsers();
   }, []);
 
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:3001/data/users"); //  "http://5.35.29.249:3001/data/users"
+      if (!response.ok) {
+        throw new Error("Сетевой запрос за пользователями не удался");
+      }
+      const usersData = await response.json();
+      setUsers(usersData); 
+    } catch (error) {
+      console.error("Ошибка при получении пользователей:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Отправляемые данные:", { username, password, role });
     try {
-      const response = await fetch("http://5.35.29.249:3001/register", {
+      const response = await fetch("http://127.0.0.1:3001/register", {
+        // "http://5.35.29.249:3001/register"
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,17 +76,12 @@ function Regestration() {
       if (!response.ok) {
         throw new Error("Сетевой запрос не удался");
       }
-      await response.json();
+      const newUser = await response.json(); 
+      setUsers((prevUsers) => [...prevUsers, newUser]); 
       alert("Регистрация прошла успешно!");
+      fetchUsers(); 
     } catch (error) {
       console.error("Ошибка:", error);
-      if (error.message === "Failed to fetch") {
-        alert(
-          "Ошибка при отправке данных на сервер. Проверьте, доступен ли сервер и настроен ли CORS."
-        );
-      } else {
-        alert("Отправлено");
-      }
     }
   };
 
@@ -108,7 +119,7 @@ function Regestration() {
             <select
               id="role"
               value={role}
-              onChange={(e) => setRole(e.target.value)} // Обновление состояния при выборе роли
+              onChange={(e) => setRole(e.target.value)} 
               required
             >
               <option value="">Выберите роль</option>
@@ -132,7 +143,7 @@ function Regestration() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {users.slice(1).map((user) => (
               <tr key={user.id}>
                 <th scope="row">{user.username}</th>
                 <td>{user.role}</td>
